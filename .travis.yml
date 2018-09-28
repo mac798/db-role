@@ -6,7 +6,7 @@ before_install:
     - which pip || apt-get install python-pip
 
 install:
-    - pip install 'ansible>=2.4.0' molecure testinfra apache-libcloud
+    - pip install 'ansible>=2.4.0' molecule testinfra apache-libcloud
 script:
     - molecule --debug test
 
