@@ -1,16 +1,17 @@
 dist: trusty
 sudo: required
 language: python
-services:
-    - docker
 before_install:
     - sudo apt-get update
-    - sudo apt-get install -y docker-engine
+    - which pip || apt-get install python-pip
 
 install:
-    - pip install molecure testinfra docker
+    - pip install 'ansible>=2.4.0' molecure testinfra apache-libcloud
 script:
-    - molecule test
+    - molecule --debug test
+
+after_script:
+    - molecule destroy
 
 notifications:
   slack:
