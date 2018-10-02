@@ -1,22 +1,24 @@
 ---
 dependency:
-  name: galaxy
+    name: galaxy
 driver:
-  name: vagrant
-  provider:
-    name: virtualbox
+    name: gce
+    credentials_file: gce_credentials.json
+    image_family: ubuntu
+    machine_type: g1-small
+    project_id: infra-207721
+
 lint:
-  name: yamllint
+    name: yamllint
 platforms:
-  - name: instance
-    box: ubuntu/xenial64
+    - name: instance
 provisioner:
-  name: ansible
-  lint:
-    name: ansible-lint
+    name: ansible
+    lint:
+        name: ansible-lint
 scenario:
-  name: default
+    name: default
 verifier:
-  name: testinfra
-  lint:
-    name: flake8
+    name: testinfra
+    lint:
+        name: flake8
